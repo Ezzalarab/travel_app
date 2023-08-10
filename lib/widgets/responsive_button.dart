@@ -1,24 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/widgets/app_text.dart';
 
 import '../app/colors.dart';
 
 class ResponsiveButton extends StatelessWidget {
-  final bool? isResponsive;
   final double? width;
-  const ResponsiveButton({super.key, this.width, this.isResponsive});
+  final String? text;
+  const ResponsiveButton({super.key, this.width, this.text});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      height: 60,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10), color: AppColors.mainColor),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset('img/button-one.png'),
-        ],
+    bool hasText = text != null;
+    return Flexible(
+      child: Container(
+        width: width,
+        height: 60,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: AppColors.mainColor),
+        child: Row(
+          mainAxisAlignment: hasText
+              ? MainAxisAlignment.spaceBetween
+              : MainAxisAlignment.center,
+          children: [
+            if (hasText)
+              Container(
+                margin: const EdgeInsets.only(left: 20),
+                child: AppText(
+                  text: text!,
+                  color: Colors.white,
+                ),
+              ),
+            Image.asset('img/button-one.png'),
+          ],
+        ),
       ),
     );
   }

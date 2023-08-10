@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'bar_item_page.dart';
-import 'home_page.dart';
-import 'my_page.dart';
-import 'search_page.dart';
+import 'main/bar_item_page.dart';
+import 'main/home_page.dart';
+import 'main/my_page.dart';
+import 'main/search_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
