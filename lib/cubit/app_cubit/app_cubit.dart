@@ -20,4 +20,12 @@ class AppCubit extends Cubit<AppState> {
       emit(AppFailure(e.toString()));
     }
   }
+
+  detailPage(DataModel place) {
+    emit(DetailsSuccess(place: place));
+  }
+
+  goHome() {
+    emit(AppSuccess(places: places));
+  }
 }

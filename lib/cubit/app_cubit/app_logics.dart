@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travel_app/pages/main_page.dart';
 
+import '../../pages/details_page.dart';
 import '../../pages/welcome_page.dart';
 import 'app_cubit.dart';
 
@@ -24,6 +25,8 @@ class _AppLogicsState extends State<AppLogics> {
             return const MainPage();
           } else if (state is AppLoading) {
             return const Center(child: CircularProgressIndicator());
+          } else if (state is DetailsSuccess) {
+            return const DetailsPage();
           } else {
             return Center(child: Text(state.runtimeType.toString()));
           }

@@ -19,11 +19,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     TabController tabController = TabController(length: 3, vsync: this);
-    List<String> placesImages = [
-      'mountain.jpeg',
-      'welcome-three.png',
-      'mountain.jpeg',
-    ];
+    // List<String> placesImages = [
+    //   'mountain.jpeg',
+    //   'welcome-three.png',
+    //   'mountain.jpeg',
+    // ];
     Map<String, dynamic> exploreItems = {
       "balloning.png": "Balloning",
       "hiking.png": "Hiking",
@@ -102,19 +102,24 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           itemCount: places.length,
                           itemBuilder: (context, index) {
                             DataModel place = places[index];
-                            return Container(
-                              margin: EdgeInsets.only(
-                                right: 10,
-                                left: (index == 0) ? 20 : 0,
-                                top: 10,
-                              ),
-                              width: 200,
-                              height: 300,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                image: DecorationImage(
-                                  image: AssetImage('img/${place.img}'),
-                                  fit: BoxFit.cover,
+                            return GestureDetector(
+                              onTap: () {
+                                context.read<AppCubit>().detailPage(place);
+                              },
+                              child: Container(
+                                margin: EdgeInsets.only(
+                                  right: 10,
+                                  left: (index == 0) ? 20 : 0,
+                                  top: 10,
+                                ),
+                                width: 200,
+                                height: 300,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  image: DecorationImage(
+                                    image: AssetImage('img/${place.img}'),
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
                             );
