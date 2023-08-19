@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:travel_app/widgets/app_large_text.dart';
-import 'package:travel_app/widgets/app_text.dart';
-import 'package:travel_app/widgets/responsive_button.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../app/colors.dart';
+import '../cubit/app_cubit/app_cubit.dart';
+import '../widgets/app_large_text.dart';
+import '../widgets/app_text.dart';
+import '../widgets/responsive_button.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -47,16 +49,16 @@ class _WelcomePageState extends State<WelcomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Column(
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      AppLargeText(text: 'Trips'),
-                      AppText(
+                      const AppLargeText(text: 'Trips'),
+                      const AppText(
                         text: 'Mountain',
                         size: 30,
                       ),
-                      SizedBox(height: 20),
-                      SizedBox(
+                      const SizedBox(height: 20),
+                      const SizedBox(
                         width: 250,
                         child: AppText(
                           text:
@@ -65,9 +67,12 @@ class _WelcomePageState extends State<WelcomePage> {
                           color: AppColors.textColor2,
                         ),
                       ),
-                      SizedBox(height: 40),
+                      const SizedBox(height: 40),
                       ResponsiveButton(
                         width: 120,
+                        onTap: () {
+                          context.read<AppCubit>().getData();
+                        },
                       ),
                     ],
                   ),
